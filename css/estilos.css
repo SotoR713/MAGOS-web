@@ -1,0 +1,15 @@
+body {
+    background-color: #0f380f;
+    color: #9bbc0f;
+}
+
+#cuadricula {
+    display: grid;
+    grid-template-columns: repeat(10, clamp(48px, 100%, 80px));
+    grid-template-rows: repeat(9, clamp(48px, 100%, 88px));
+    gap: 1px;
+}
+
+.casilla {
+    background-color: #8bac0f;
+}
