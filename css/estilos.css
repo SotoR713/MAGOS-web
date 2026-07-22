@@ -1,12 +1,18 @@
 body {
     background-color: #0f380f;
     color: #9bbc0f;
+    display: flex;
+    justify-content: center;
+    
+    min-height: 100vh;
+    margin:0;
+    padding-top: 10px;
 }
 
 #cuadricula {
     display: grid;
-    grid-template-columns: repeat(10, clamp(48px, 100%, 80px));
-    grid-template-rows: repeat(9, clamp(48px, 100%, 88px));
+    grid-template-columns: repeat(10, clamp(24px, 9vmin, 120px));
+    grid-template-rows: repeat(9, clamp(24px, 9vmin, 120px));
     gap: 1px;
 }
 
