@@ -8,16 +8,16 @@ import { Agua } from "./datos/ListaElementos.js";
 import { enfrentamiento } from "./dominio/Combate.js";
 import { listaRivales } from "./datos/ListaRival.js";
 
-const genCombate = new Generador(713);
-const luchador1 = listaRivales[2]; // Hexomante (Fuego)
-const luchador2 = listaRivales[3]; // Algoritus (Planta)
+import { crearRival } from "./dominio/Fabrica.js";
 
-const resultado = enfrentamiento(luchador1, luchador2, genCombate);
-console.log("=== REGISTRO DE COMBATE ===");
-for (const evento of resultado.registro) {
-    console.log(evento);
-}
-console.log("GANADOR:", resultado.ganador.getNombre());
+const genFab = new Generador(713);
+const num = genFab.aleatorio();
+const rivalGenerado = crearRival(num, 3); // posición 3 en la senda
+console.log("Rival generado:", rivalGenerado.getNombre(),
+            "| Elemento:", rivalGenerado.getElemento().getNombre(),
+            "| Nivel:", rivalGenerado.getNivel(),
+            "| HP:", rivalGenerado.getHpMax(),
+            "| Fuerza:", rivalGenerado.getFuerza());
 
 
 
