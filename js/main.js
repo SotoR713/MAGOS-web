@@ -10,15 +10,13 @@ import { listaRivales } from "./datos/ListaRival.js";
 
 import { crearRival } from "./dominio/Fabrica.js";
 
-const genFab = new Generador(713);
-const num = genFab.aleatorio();
-const rivalGenerado = crearRival(num, 3); // posición 3 en la senda
-console.log("Rival generado:", rivalGenerado.getNombre(),
-            "| Elemento:", rivalGenerado.getElemento().getNombre(),
-            "| Nivel:", rivalGenerado.getNivel(),
-            "| HP:", rivalGenerado.getHpMax(),
-            "| Fuerza:", rivalGenerado.getFuerza());
+import { nombreASemilla } from "./dominio/NombreASemilla.js";
 
+const semilla = nombreASemilla("SotoR713");
+console.log("Semilla de 'SotoR713':", semilla);
+
+const genNombre = new Generador(semilla);
+console.log("Primer aleatorio:", genNombre.aleatorio());
 
 
 
