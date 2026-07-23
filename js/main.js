@@ -1,5 +1,5 @@
 import { Generador } from "./logica/Generador.js";
-import { raizDigital } from "./logica/RaizDigita.js";
+import { raizDigital } from "./logica/RaizDigital.js";
 import { crearElemento } from "./logica/CrearElementos.js";
 
 const genElem = new Generador(713);
