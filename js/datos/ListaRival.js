@@ -1,0 +1,22 @@
+export const listaRivales = [
+    new Rival("00", "Sortilego", Agua, 24, 24, 3, 4, 4, 0),
+    new Rival("01", "Debugorio", Agua, 24, 24, 3, 4, 4, 0),
+    new Rival("02", "Hexomante", Fuego, 18, 18, 8, 4, 5, 0),
+    new Rival("03", "Algoritus", Planta, 22, 22, 4, 6, 3, 0),
+    new Rival("04", "Binarcano", Tierra, 26, 26, 3, 5, 1, 0),
+    new Rival("05", "Stackomante", Neutral, 20, 20, 5, 5, 5, 0),
+    new Rival("06", "Recursio", Agua, 17, 17, 6, 3, 9, 0),
+    new Rival("07", "Kernelius", Fuego, 15, 15, 10, 4, 6, 0),
+    new Rival("08", "Overflorius", Planta, 19, 19, 4, 8, 4, 0),
+    new Rival("09", "Crashelio", Tierra, 21, 21, 5, 7, 2, 0),
+    new Rival("10", "Punterius", Agua, 30, 30, 1, 2, 2, 0),
+    new Rival("11", "Hexagoro", Fuego, 16, 16, 11, 3, 5, 0),
+    new Rival("12", "Alquimia", Planta, 18, 18, 6, 5, 6, 0),
+    new Rival("13", "Oraclon", Tierra, 23, 23, 4, 7, 1, 0),
+    new Rival("14", "Trucanor", Agua, 20, 20, 7, 2, 6, 0),
+    new Rival("15", "Nigrombo", Fuego, 17, 17, 9, 5, 4, 0),
+    new Rival("16", "Musgorio", Planta, 25, 25, 3, 6, 1, 0),
+    new Rival("17", "Pedrurio", Tierra, 28, 28, 2, 5, 0, 0),
+    new Rival("18", "Cubistar", Agua, 14, 14, 7, 4, 10, 0),
+    new Rival("19", "Esotron", Fuego, 20, 20, 6, 4, 5, 0)
+];

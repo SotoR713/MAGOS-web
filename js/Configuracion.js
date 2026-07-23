@@ -1,2 +1,16 @@
 export const DANO_MINIMO = 1;
 export const DANO_FUERTE_ELEMENTAL = 50;
+
+export const MAXIMO_CRITICO_JUGADOR = 30;
+export const BONIFICACION_CRITICO_JUGADOR = 50;
+export const MAXIMA_EVASION_JUGADOR = 20;
+
+export const STATS_POR_NIVEL_RIVAL = 4;
+export const PORCENTAJE_DANO_CRITICO_RIVAL = 10;
+export const BONIFICACION_CRITICO_RIVAL = 50;
+export const EVASION_RIVAL = 10;
+
+export const STATS_POR_NIVEL_JEFE = 4;
+export const PORCENTAJE_DANO_CRITICO_JEFE = 15;
+export const BONIFICACION_CRITICO_JEFE = 50;
+export const EVASION_JEFE = 10;
