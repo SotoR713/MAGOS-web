@@ -1,4 +1,5 @@
 import { Jefe } from "../entidades/Jefe.js";
+import { Agua, Fuego, Planta, Tierra, Neutral } from "./ListaElementos.js";
 
 export const listaJefes = [
     new Jefe("0", "Nullizador", Neutral, 28, 28, 2, 4, 1, 0),

@@ -14,3 +14,5 @@ export const STATS_POR_NIVEL_JEFE = 4;
 export const PORCENTAJE_DANO_CRITICO_JEFE = 15;
 export const BONIFICACION_CRITICO_JEFE = 50;
 export const EVASION_JEFE = 10;
+
+export const PORCENTAJE_CURACION_VICTORIA = 30;

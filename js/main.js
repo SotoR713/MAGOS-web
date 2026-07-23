@@ -5,18 +5,24 @@ import { Mago } from "./entidades/Magos.js";
 import { Jugador } from "./entidades/Jugador.js";
 import { Agua } from "./datos/ListaElementos.js";
 
-const heroe = new Jugador(1, "Test", Agua, 20, 20, 5, 2, 3, 1);
-console.log("Nombre:", heroe.getNombre(), "| Nivel:", heroe.getNivel());
-heroe.subirNivel();
-console.log("Tras subir nivel:", heroe.getNivel());
-heroe.recibirDano(8);
-console.log("HP tras recibir 8 de daño:", heroe.getHpActual());
+import { enfrentamiento } from "./dominio/Combate.js";
+import { listaRivales } from "./datos/ListaRival.js";
 
-console.log("Clase Mago cargada:", Mago);
-const genElem = new Generador(713);
-const num = genElem.aleatorio();
-const elem = crearElemento(num);
-console.log("Número:", num, "→ Elemento:", elem.getNombre());
+const genCombate = new Generador(713);
+const luchador1 = listaRivales[2]; // Hexomante (Fuego)
+const luchador2 = listaRivales[3]; // Algoritus (Planta)
+
+const resultado = enfrentamiento(luchador1, luchador2, genCombate);
+console.log("=== REGISTRO DE COMBATE ===");
+for (const evento of resultado.registro) {
+    console.log(evento);
+}
+console.log("GANADOR:", resultado.ganador.getNombre());
+
+
+
+
+
 
 const cuadricula = document.getElementById("cuadricula");
 console.log(cuadricula);
