@@ -1,4 +1,4 @@
-import { Agua, Fuego, Planta, Tierra, Neutral } from "./Elementos.js";
+import { Agua, Fuego, Planta, Tierra, Neutral } from "../entidades/Elementos.js";
 
 export function crearElemento(numeroDado) {
     const asignacion = Math.floor((numeroDado % 10) / 2);

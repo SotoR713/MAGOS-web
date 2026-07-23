@@ -1,7 +1,10 @@
-import { Generador } from "./logica/Generador.js";
-import { raizDigital } from "./logica/RaizDigital.js";
-import { crearElemento } from "./logica/CrearElementos.js";
+import { Generador } from "./utilidades/Generador.js";
+import { raizDigital } from "./utilidades/RaizDigital.js";
+import { crearElemento } from "./dominio/CrearElementos.js";
+import { Mago } from "./entidades/Magos.js";
 
+
+console.log("Clase Mago cargada:", Mago);
 const genElem = new Generador(713);
 const num = genElem.aleatorio();
 const elem = crearElemento(num);
