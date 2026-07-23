@@ -1,3 +1,5 @@
+import { Rival } from "../entidades/Rival.js";
+
 export const listaRivales = [
     new Rival("00", "Sortilego", Agua, 24, 24, 3, 4, 4, 0),
     new Rival("01", "Debugorio", Agua, 24, 24, 3, 4, 4, 0),

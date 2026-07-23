@@ -1,5 +1,5 @@
 import { Mago } from "./Magos.js";
-import { Agua, Fuego, Planta, Tierra, Neutral } from "./Elementos.js";
+import { Agua, Fuego, Planta, Tierra, Neutral } from "../entidades/Elementos.js";
 import { STATS_POR_NIVEL_RIVAL, PORCENTAJE_DANO_CRITICO_RIVAL, BONIFICACION_CRITICO_RIVAL, EVASION_RIVAL } from "../Configuracion.js";
 
 export class Rival extends Mago {

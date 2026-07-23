@@ -3,7 +3,7 @@ import { raizDigital } from "./utilidades/RaizDigital.js";
 import { crearElemento } from "./dominio/CrearElementos.js";
 import { Mago } from "./entidades/Magos.js";
 import { Jugador } from "./entidades/Jugador.js";
-import { Agua } from "./entidades/Elementos.js";
+import { Agua } from "./datos/ListaElementos.js";
 
 const heroe = new Jugador(1, "Test", Agua, 20, 20, 5, 2, 3, 1);
 console.log("Nombre:", heroe.getNombre(), "| Nivel:", heroe.getNivel());

@@ -1,4 +1,4 @@
-import { Jefe } from "../entidades/Jefes.js";
+import { Jefe } from "../entidades/Jefe.js";
 
 export const listaJefes = [
     new Jefe("0", "Nullizador", Neutral, 28, 28, 2, 4, 1, 0),

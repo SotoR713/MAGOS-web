@@ -1,5 +1,5 @@
 import { Mago } from "./Magos.js";
-import { Agua, Fuego, Planta, Tierra, Neutral } from "./Elementos.js";
+import { Agua, Fuego, Planta, Tierra, Neutral } from "../entidades/Elementos.js";
 import { STATS_POR_NIVEL_JEFE, PORCENTAJE_DANO_CRITICO_JEFE, BONIFICACION_CRITICO_JEFE, EVASION_JEFE } from "../Configuracion.js";
 
 export class Jefe extends Mago {
