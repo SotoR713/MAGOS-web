@@ -7,9 +7,14 @@ export function registrarPantalla(nombre, funcionDibujar) {
 
 export function mostrarPantalla(nombre, datos) {
     app.innerHTML = "";
+
+    const marco = document.createElement("div");
+    marco.id = "marco";
+    app.appendChild(marco);
+
     const dibujar = pantallas[nombre];
     if (dibujar) {
-        dibujar(app, datos);
+        dibujar(marco, datos);
     } else {
         console.error("No existe la pantalla:", nombre);
     }

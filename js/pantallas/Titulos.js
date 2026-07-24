@@ -6,6 +6,7 @@ import { VIDA_JUGADOR, FUERZA_JUGADOR, ARMADURA_JUGADOR, VELOCIDAD_JUGADOR } fro
 import { crearRival } from "../dominio/Fabrica.js";
 import { Generador } from "../utilidades/Generador.js";
 
+
 export function dibujarTitulo(contenedor, datos) {
     // --- Título ---
     const titulo = document.createElement("h1");
@@ -14,21 +15,23 @@ export function dibujarTitulo(contenedor, datos) {
 
     const subtitulo = document.createElement("p");
     subtitulo.classList.add("subtitulo-juego");
-    subtitulo.textContent = "La Onceava Senda";
+    subtitulo.textContent = "Tu nombre define tu senda";
 
     // --- Campo de nombre ---
     const etiquetaNombre = document.createElement("label");
-    etiquetaNombre.textContent = "Nombre del mago:";
+    etiquetaNombre.textContent = "TU NOMBRE:";
 
     const inputNombre = document.createElement("input");
     inputNombre.type = "text";
+    inputNombre.placeholder = "Escribe tu nombre aquí";
     inputNombre.classList.add("input-nombre");
-    inputNombre.maxLength = 12;
+    inputNombre.maxLength = 30;
+    inputNombre.required = true; // <-- Añade esta línea
 
     // --- Selección de elemento ---
     const etiquetaElemento = document.createElement("div");
+    
     etiquetaElemento.textContent = "Elige tu elemento:";
-
     const opciones = [
         { nombre: "Agua", elemento: Agua },
         { nombre: "Fuego", elemento: Fuego },
@@ -37,7 +40,7 @@ export function dibujarTitulo(contenedor, datos) {
         { nombre: "Neutral", elemento: Neutral }
     ];
 
-    let elementoElegido = Agua;
+    let elementoElegido = Neutral;
 
     const contenedorElementos = document.createElement("div");
     contenedorElementos.classList.add("selector-elementos");
@@ -64,8 +67,14 @@ export function dibujarTitulo(contenedor, datos) {
     botonEmpezar.textContent = "Comenzar la senda";
 
     botonEmpezar.addEventListener("click", function () {
-        const nombre = inputNombre.value;
-
+       
+        const nombre = inputNombre.value.trim();
+        
+        if (nombre === "") {
+        alert("¡Debes escribir un nombre para comenzar tu senda!");
+        inputNombre.focus(); // Coloca el cursor en la casilla automáticamente
+        return; // Detiene la función aquí y no avanza de pantalla
+        }
         // Crear la semilla desde el nombre
         const idJugador = nombreASemilla(nombre);
 
