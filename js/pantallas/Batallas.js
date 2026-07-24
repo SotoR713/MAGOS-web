@@ -117,9 +117,15 @@ export function dibujarBatalla(contenedor, datos) {
     let indice = 0;
 
     function mostrarEvento() {
-        if (indice >= registro.length) {
-            // El combate terminó: regresar a la exploración si venimos de ahí
-            if (datos.mapa) {
+       if (indice >= registro.length) {
+            if (jugador.getHpActual() <= 0) {
+                // El jugador murió en combate: game over
+                mostrarPantalla("fin", {
+                    jugador: jugador,
+                    posicion: datos.mapa ? datos.mapa.getPosicion() : 0,
+                    victoria: false
+                });
+            } else if (datos.mapa) {
                 mostrarPantalla("exploracion", { jugador: jugador, mapa: datos.mapa });
             }
             return;

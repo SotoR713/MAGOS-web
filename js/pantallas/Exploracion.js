@@ -26,10 +26,29 @@ function elegirCamino(eleccion) {
                 mapa: mapa
             });
         } else {
-            // "seguir": aplicar efecto ya hecho, redibujar el mapa
+            // "seguir": mostrar el mensaje del evento y esperar clic para continuar
+            mostrarMensaje(resultado.mensaje);
+        }
+    }
+
+    // Muestra un mensaje ocupando la pantalla, con botón para continuar
+    function mostrarMensaje(texto) {
+        contenedor.innerHTML = "";
+
+        const caja = document.createElement("div");
+        caja.classList.add("caja-texto");
+        caja.textContent = texto;
+
+        const boton = document.createElement("button");
+        boton.classList.add("boton-continuar");
+        boton.textContent = "Continuar";
+        boton.addEventListener("click", function () {
             contenedor.innerHTML = "";
             dibujarExploracion(contenedor, { jugador: jugador, mapa: mapa });
-        }
+        });
+
+        contenedor.appendChild(caja);
+        contenedor.appendChild(boton);
     }
 
     // --- Cuadrícula 10x9 ---
