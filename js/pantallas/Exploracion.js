@@ -25,11 +25,18 @@ function elegirCamino(eleccion) {
                 generador: mapa.getGenerador(),
                 mapa: mapa
             });
-        } else {
-            // "seguir": mostrar el mensaje del evento y esperar clic para continuar
-            mostrarMensaje(resultado.mensaje);
-        }
-    }
+       } else {
+            // "seguir": ¿el efecto (ej. cofre-trampa) mató al jugador?
+            if (jugador.getHpActual() <= 0) {
+                mostrarPantalla("fin", {
+                    jugador: jugador,
+                    posicion: mapa.getPosicion(),
+                    victoria: false
+                });
+            } else {
+                mostrarMensaje(resultado.mensaje);
+            }
+        }}
 
     // Muestra un mensaje ocupando la pantalla, con botón para continuar
     function mostrarMensaje(texto) {

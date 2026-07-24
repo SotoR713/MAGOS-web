@@ -1,5 +1,6 @@
 import { enfrentamiento } from "../dominio/Combate.js";
 import { mostrarPantalla } from "./Organizador.js";
+import { PORCENTAJE_CURACION_VICTORIA } from "../Configuracion.js";
 
 function crearBloqueStats(mago) {
     const stats = document.createElement("div");
@@ -117,7 +118,14 @@ export function dibujarBatalla(contenedor, datos) {
     let indice = 0;
 
     function mostrarEvento() {
-       if (indice >= registro.length) {
+      if (indice >= registro.length) {
+            // ¿Ganó el jugador? Aplicar recompensa de victoria
+            if (jugador.getHpActual() > 0 && resultado.ganador === jugador) {
+                jugador.subirNivel();
+                const vidaCurada = Math.floor(jugador.getHpMax() * PORCENTAJE_CURACION_VICTORIA / 100);
+                jugador.curar(vidaCurada);
+            }
+
             if (jugador.getHpActual() <= 0) {
                 // El jugador murió en combate: game over
                 mostrarPantalla("fin", {
