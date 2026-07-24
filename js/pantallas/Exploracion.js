@@ -2,6 +2,7 @@ import { Mapa } from "../dominio/Mapa.js";
 import { mostrarPantalla } from "./Organizador.js";
 import { crearRival } from "../dominio/Fabrica.js";
 import { BRival } from "../datos/ListaEventos.js";
+import { resolverEvento } from "../dominio/ResolverEvento.js";
 
 export function dibujarExploracion(contenedor, datos) {
     const jugador = datos.jugador;
@@ -11,20 +12,21 @@ export function dibujarExploracion(contenedor, datos) {
     const op0 = mapa.getSiguiente0();
     const op1 = mapa.getSiguiente1();
 
-    function elegirCamino(eleccion) {
+function elegirCamino(eleccion) {
         const eventoElegido = (eleccion === 0) ? op0 : op1;
-
         mapa.registrarAvance(eleccion);
 
-        if (eventoElegido === BRival) {
-            const rival = crearRival(mapa.getGenerador().aleatorio(), mapa.getCamino().length);
+        const resultado = resolverEvento(mapa, eventoElegido);
+
+        if (resultado.accion === "combate") {
             mostrarPantalla("batalla", {
                 jugador: jugador,
-                rival: rival,
+                rival: resultado.enemigo,
                 generador: mapa.getGenerador(),
                 mapa: mapa
             });
         } else {
+            // "seguir": aplicar efecto ya hecho, redibujar el mapa
             contenedor.innerHTML = "";
             dibujarExploracion(contenedor, { jugador: jugador, mapa: mapa });
         }
