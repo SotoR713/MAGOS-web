@@ -32,3 +32,5 @@ export const PORCENTAJE_DANO_COFRE = 10;
 export const UMBRAL_SUBIR = 4;
 export const UMBRAL_CURACION = 7;
 export const UMBRAL_BATALLA = 8;
+
+export const STATS_POR_NIVEL_JUGADOR = 4;

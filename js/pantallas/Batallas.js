@@ -120,19 +120,14 @@ export function dibujarBatalla(contenedor, datos) {
     function mostrarEvento() {
       if (indice >= registro.length) {
             // ¿Ganó el jugador? Aplicar recompensa de victoria
-            if (jugador.getHpActual() > 0 && resultado.ganador === jugador) {
+if (jugador.getHpActual() <= 0) {
+                mostrarPantalla("fin", { jugador: jugador, posicion: datos.mapa ? datos.mapa.getPosicion() : 0, victoria: false });
+            } else if (resultado.ganador === jugador) {
+                // Victoria: subir nivel, curar, e ir a repartir stats
                 jugador.subirNivel();
                 const vidaCurada = Math.floor(jugador.getHpMax() * PORCENTAJE_CURACION_VICTORIA / 100);
                 jugador.curar(vidaCurada);
-            }
-
-            if (jugador.getHpActual() <= 0) {
-                // El jugador murió en combate: game over
-                mostrarPantalla("fin", {
-                    jugador: jugador,
-                    posicion: datos.mapa ? datos.mapa.getPosicion() : 0,
-                    victoria: false
-                });
+                mostrarPantalla("reparto", { jugador: jugador, mapa: datos.mapa });
             } else if (datos.mapa) {
                 mostrarPantalla("exploracion", { jugador: jugador, mapa: datos.mapa });
             }
