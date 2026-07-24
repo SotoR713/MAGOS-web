@@ -20,3 +20,8 @@ export const PORCENTAJE_CURACION_VICTORIA = 30;
 export const POSICIONES_JEFE = 5;
 export const SIGUIENTE_RIVAL = 6;
 export const SIGUIENTE_COFRE = 8;
+
+export const VIDA_JUGADOR = 20;
+export const FUERZA_JUGADOR = 8;
+export const ARMADURA_JUGADOR = 8;
+export const VELOCIDAD_JUGADOR = 8;
