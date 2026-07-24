@@ -82,11 +82,7 @@ export function dibujarTitulo(contenedor, datos) {
             0
         );
 
-        // (Temporal) Generar un rival y saltar al combate para probar la conexión
-        const generador = new Generador(idJugador);
-        const rival = crearRival(generador.aleatorio(), 3);
-
-        mostrarPantalla("batalla", { jugador: jugador, rival: rival, generador: generador });
+mostrarPantalla("exploracion", { jugador: jugador });
     });
 
     // --- Montar todo ---

@@ -1,4 +1,5 @@
 import { enfrentamiento } from "../dominio/Combate.js";
+import { mostrarPantalla } from "./Organizador.js";
 
 // Crea el bloque de stats de un mago (evita duplicar código - DRY)
 function crearBloqueStats(mago) {
