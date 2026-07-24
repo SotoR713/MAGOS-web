@@ -1,267 +1,223 @@
-/* ===== BASE ===== */
+/* ==========================================================
+   VARIABLES DEL JUEGO
+   ========================================================== */
+
+:root {
+
+    /* Tamaño de cada casilla */
+    --lado-casilla: clamp(24px, 9vmin, 120px);
+
+    /* Dimensiones del mapa */
+    --columnas: 10;
+    --filas: 9;
+
+    /* Tamaño oficial del juego */
+    --ancho-juego: calc(
+        var(--columnas) * var(--lado-casilla) +
+        (var(--columnas) - 1) * 1px
+    );
+
+    --alto-mapa: calc(
+        var(--filas) * var(--lado-casilla) +
+        (var(--filas) - 1) * 1px
+    );
+
+}
+
+
+/* ==========================================================
+   BASE
+   ========================================================== */
+
 body {
     background-color: #0f380f;
     color: #e0f8d0;
+
     display: flex;
     justify-content: center;
+
     min-height: 100vh;
+
     margin: 0;
     padding-top: 10px;
+
     font-family: monospace;
     image-rendering: pixelated;
 }
 
 
-
-/* ===== CUADRÍCULA DEL MAPA ===== */
-#cuadricula {
-    display: grid;
-    grid-template-columns: repeat(10, clamp(24px, 9vmin, 120px));
-    grid-template-rows: repeat(9, clamp(24px, 9vmin, 120px));
-    gap: 1px;
-}
-
-.casilla {
-    background-color: #8bac0f;
-}
-
-/* ===== COMBATE: ARENA ===== */
-.arena {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: stretch;
-    gap: 8px;
-    width: 100%;
-    max-width: 400px;
-}
-
-.lado-combatiente {
-    flex: 1;
-    background-color: #306230;
-    border: 3px solid #0f380f;
-    box-shadow: inset 0 0 0 2px #8bac0f;
-    padding: 8px;
-    box-sizing: border-box;
-    image-rendering: pixelated;
-}
-
-/* ===== COMBATE: NOMBRE Y ELEMENTO ===== */
-.nombre-combatiente {
-    font-weight: bold;
-    font-size: 0.8em;
-    color: #e0f8d0;
-    height: 2.4em;
-    overflow: hidden;
-    line-height: 1.2;
-}
-
-.elemento-combatiente {
-    font-size: 0.7em;
-    color: #8bac0f;
-    margin-bottom: 4px;
-}
-
-/* ===== COMBATE: BARRA DE VIDA ===== */
-.barra-vida {
-    width: 100%;
-    height: 12px;
-    background-color: #0f380f;
-    border: 2px solid #0f380f;
-}
-
-.barra-vida-relleno {
-    height: 100%;
-    background-color: #8bac0f;
-    transition: width 0.3s;
-}
-
-.hp-texto {
-    font-size: 0.75em;
-    margin-top: 2px;
-    color: #e0f8d0;
-}
-
-/* ===== COMBATE: STATS ===== */
-.stats-combatiente {
-    margin-top: 6px;
-    font-size: 0.7em;
-    line-height: 1.5;
-    color: #e0f8d0;
-}
-
-/* ===== CAJA DE TEXTO (diálogo Pokémon) ===== */
-.caja-texto {
-    width: 100%;
-    max-width: 400px;
-    height: 60px;
-    margin-top: 10px;
-    background-color: #e0f8d0;
-    color: #0f380f;
-    border: 3px solid #0f380f;
-    box-shadow: inset 0 0 0 2px #8bac0f;
-    border-radius: 6px;
-    padding: 12px;
-    box-sizing: border-box;
-    font-size: 0.85em;
-    display: flex;
-    align-items: center;
-}
-
-/* ===== BOTONES ===== */
-.boton-continuar {
-    width: 100%;
-    max-width: 400px;
-    margin-top: 8px;
-    background-color: #306230;
-    color: #e0f8d0;
-    border: 3px solid #0f380f;
-    border-radius: 6px;
-    padding: 10px;
-    font-family: inherit;
-    font-size: 0.9em;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.boton-continuar:hover {
-    background-color: #8bac0f;
-    color: #0f380f;
-}
-
-/* ===== PANTALLA DE TÍTULO ===== */
-.titulo-juego {
-    color: #e0f8d0;
-    font-size: 2em;
-    letter-spacing: 4px;
-    margin-bottom: 0;
-    text-align: center;
-    text-shadow: 2px 2px 0 #0f380f;
-}
-
-.subtitulo-juego {
-    color: #8bac0f;
-    font-size: 0.9em;
-    margin-top: 4px;
-    margin-bottom: 20px;
-    text-align: center;
-}
+/* ==========================================================
+   CONTENEDOR PRINCIPAL
+   ========================================================== */
 
 #app {
+
     display: flex;
     flex-direction: column;
     align-items: center;
+
     gap: 12px;
+
     padding: 16px;
+
     width: 100%;
     max-width: 440px;
+
     box-sizing: border-box;
 }
 
-.input-nombre {
-    background-color: #e0f8d0;
-    color: #0f380f;
-    border: 3px solid #0f380f;
-    border-radius: 6px;
-    padding: 8px;
-    font-family: inherit;
-    font-size: 1em;
-    width: 100%;
-    max-width: 260px;
-    box-sizing: border-box;
-    margin: 6px 0 16px 0;
-    text-align: center;
-}
 
-.selector-elementos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 6px;
-    margin: 8px 0 20px 0;
-    max-width: 300px;
-}
-
-.boton-elemento {
-    background-color: #306230;
-    color: #e0f8d0;
-    border: 2px solid #0f380f;
-    border-radius: 6px;
-    padding: 8px 12px;
-    font-family: inherit;
-    font-size: 0.8em;
-    cursor: pointer;
-}
-
-.boton-elemento:hover {
-    background-color: #8bac0f;
-    color: #0f380f;
-}
-
-.elemento-activo {
-    background-color: #8bac0f;
-    color: #0f380f;
-    border-color: #e0f8d0;
-}
-.camino {
-    background-color: #306230;
-}
-
-.evento {
-    background-color: #8bac0f;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    color: #0f380f;
-}
-
-.jugador {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    color: #e0f8d0;
-}
-
+/* ==========================================================
+   MARCO DEL JUEGO
+   ========================================================== */
 .barra-stats {
+
     display: flex;
     flex-direction: row;
-    width: calc(10 * clamp(24px, 9vmin, 120px) + 9px);
+
+    width: 100%;
+
     margin-top: 10px;
+
     background-color: #e0f8d0;
     color: #0f380f;
+
     border: 3px solid #0f380f;
-    box-shadow: inset 0 0 0 2px #8bac0f;
     border-radius: 6px;
+
+    box-shadow: inset 0 0 0 2px #8bac0f;
+
     box-sizing: border-box;
+
     font-size: 0.75em;
+
 }
 
-.barra-jugador {
-    flex: 3;
+#marco {
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    width: var(--ancho-juego);
+
+    padding: 4px;
+
+    gap: 0;
+
+    background-color: #0f380f;
+
+    border: 4px solid #8bac0f;
+    border-radius: 8px;
+
+    box-sizing: border-box;
+
+}
+
+
+/* ==========================================================
+   COMPONENTES COMUNES
+   ========================================================== */
+
+
+/* ---------- Botón principal ---------- */
+
+.boton-continuar {
+
+    display: block;
+
+    width: 260px;
+    max-width: 100%;
+
+    margin: 6px auto 0 auto;
+
     padding: 8px;
-    border-right: 2px solid #0f380f;
-}
 
-.barra-nombre {
+    background-color: #306230;
+    color: #e0f8d0;
+
+    border: 3px solid #8bac0f;
+
+    box-sizing: border-box;
+
+    font-family: inherit;
+    font-size: .85rem;
     font-weight: bold;
-    margin-bottom: 4px;
+
+    text-align: center;
+
+    cursor: pointer;
+
 }
 
-.barra-stats-detalle {
-    line-height: 1.4;
+.boton-continuar:hover {
+
+    background-color: #8bac0f;
+    color: #0f380f;
+
 }
 
-.barra-senda {
-    flex: 1;
+
+/* ---------- Campo de texto ---------- */
+
+.input-nombre {
+
+    width: 100%;
+    max-width: 260px;
+
+    margin: 6px 0 16px;
+
     padding: 8px;
+
+    box-sizing: border-box;
+
+    background-color: #e0f8d0;
+    color: #0f380f;
+
+    border: 3px solid #0f380f;
+    border-radius: 6px;
+
+    font-family: inherit;
+    font-size: 1em;
+
+    text-align: center;
+}
+
+
+/* ---------- Caja de diálogo ---------- */
+
+.caja-texto {
+
+    width: 100%;
+
+    height: 64px;
+
+    margin-top: 2px;
+
+    padding: 8px;
+
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-weight: bold;
+
+    box-sizing: border-box;
+
+    background-color: #e0f8d0;
+    color: #0f380f;
+
+    border: 3px solid #0f380f;
+    border-radius: 0;
+
+    box-shadow: inset 0 0 0 2px #8bac0f;
+
+    font-size: 0.85em;
+    line-height: 1.3;
+
 }
+
+
+/* ==========================================================
+   UTILIDADES
+   ========================================================== */
 
 .clicable {
     cursor: pointer;
@@ -271,18 +227,356 @@ body {
     background-color: #e0f8d0;
 }
 
-#marco {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
+/* ==========================================================
+   PANTALLA DE TÍTULO
+   ========================================================== */
 
-    width: max-content;
-    min-width: 100%;
 
-    padding: 20px;
-    border: 4px solid #8bac0f;
-    border-radius: 8px;
-    box-sizing: border-box;
+/* ---------- Título ---------- */
+
+.titulo-juego {
+
+    margin: 16px 0 2px 0;
+
+    color: #e0f8d0;
+
+    font-size: 2rem;
+
+    text-align: center;
+
+    letter-spacing: .45rem;
+
+    text-shadow: 2px 2px 0 #0f380f;
+
 }
 
+
+/* ---------- Subtítulo ---------- */
+
+.subtitulo-juego {
+
+    margin: 0 0 24px 0;
+
+    color: #8bac0f;
+
+    font-size: .85rem;
+
+    text-align: center;
+
+}
+
+
+/* ---------- Selector de elementos ---------- */
+
+.selector-elementos {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    gap: 6px;
+
+    margin: 8px 0 20px;
+
+    max-width: 300px;
+}
+
+
+/* ---------- Botones de elemento ---------- */
+
+.boton-elemento {
+
+    background-color: #306230;
+    color: #e0f8d0;
+
+    border: 2px solid #0f380f;
+    border-radius: 6px;
+
+    padding: 8px 12px;
+
+    font-family: inherit;
+    font-size: 0.8em;
+
+    cursor: pointer;
+}
+
+.boton-elemento:hover {
+
+    background-color: #8bac0f;
+    color: #0f380f;
+}
+
+
+/* ---------- Elemento seleccionado ---------- */
+
+.elemento-activo {
+
+    background-color: #8bac0f;
+    color: #0f380f;
+
+    border-color: #e0f8d0;
+}
+
+/* ==========================================================
+   EXPLORACIÓN
+   ========================================================== */
+
+
+/* ---------- Cuadrícula del mapa ---------- */
+
+#cuadricula {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(var(--columnas), var(--lado-casilla));
+
+    grid-template-rows:
+        repeat(var(--filas), var(--lado-casilla));
+
+    gap: 1px;
+
+    width: 100%;
+
+    margin: 0;
+
+}
+
+
+/* ---------- Casillas ---------- */
+
+.casilla {
+
+    background-color: #8bac0f;
+}
+
+
+/* ---------- Camino ---------- */
+
+.camino {
+
+    background-color: #306230;
+}
+
+
+/* ---------- Eventos ---------- */
+
+.evento {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #8bac0f;
+
+    color: #0f380f;
+    font-weight: bold;
+}
+
+
+/* ---------- Jugador ---------- */
+
+.jugador {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #e0f8d0;
+    font-weight: bold;
+}
+
+
+/* ==========================================================
+   BARRA DE ESTADÍSTICAS
+   ========================================================== */
+
+.barra-stats {
+
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+
+    margin: 0;
+
+    background-color: #e0f8d0;
+    color: #0f380f;
+
+    border-top: 4px solid #8bac0f;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+
+    border-radius: 0;
+
+    box-shadow: none;
+
+    box-sizing: border-box;
+
+    font-size: .75rem;
+
+}
+
+
+/* ---------- Datos del jugador ---------- */
+
+.barra-jugador {
+
+    flex: 3;
+
+    padding: 6px 10px;
+
+    border-right: 2px solid #0f380f;
+
+}
+
+.barra-nombre {
+
+    font-weight: bold;
+
+    margin: 0 0 2px 0;
+
+}
+
+.barra-stats-detalle {
+
+    line-height: 1.2;
+
+}
+
+
+/* ---------- Información de la senda ---------- */
+
+.barra-senda {
+
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 6px;
+
+    text-align: center;
+
+    font-weight: bold;
+
+}
+
+/* ==========================================================
+   COMBATE
+   ========================================================== */
+
+
+/* ---------- Arena ---------- */
+
+.arena {
+
+    display: flex;
+
+    flex-direction: row;
+
+    justify-content: space-between;
+    align-items: stretch;
+
+    gap: 8px;
+
+    width: 100%;
+
+}
+
+
+/* ---------- Combatientes ---------- */
+
+.lado-combatiente {
+
+    flex: 1;
+
+    padding: 8px;
+
+    box-sizing: border-box;
+
+    background-color: #306230;
+
+    border: 3px solid #0f380f;
+
+    box-shadow: inset 0 0 0 2px #8bac0f;
+
+    image-rendering: pixelated;
+}
+
+
+/* ---------- Nombre ---------- */
+
+.nombre-combatiente {
+
+    height: 2.4em;
+
+    overflow: hidden;
+
+    color: #e0f8d0;
+
+    font-size: 0.8em;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+
+/* ---------- Elemento ---------- */
+
+.elemento-combatiente {
+
+    margin-bottom: 4px;
+
+    color: #8bac0f;
+
+    font-size: 0.7em;
+}
+
+
+/* ---------- Barra de vida ---------- */
+
+.barra-vida {
+
+    width: 100%;
+    height: 12px;
+
+    background-color: #0f380f;
+
+    border: 2px solid #0f380f;
+}
+
+.barra-vida-relleno {
+
+    height: 100%;
+
+    background-color: #8bac0f;
+
+    transition: width .3s;
+}
+
+
+/* ---------- HP ---------- */
+
+.hp-texto {
+
+    margin-top: 2px;
+
+    color: #e0f8d0;
+
+    font-size: 0.75em;
+}
+
+
+/* ---------- Estadísticas ---------- */
+
+.stats-combatiente {
+
+    margin-top: 6px;
+
+    color: #e0f8d0;
+
+    font-size: 0.7em;
+    line-height: 1.5;
+}
