@@ -2,25 +2,29 @@ import { Generador } from "./utilidades/Generador.js";
 import { raizDigital } from "./utilidades/RaizDigital.js";
 import { crearElemento } from "./dominio/CrearElementos.js";
 import { Mago } from "./entidades/Magos.js";
-import { Jugador } from "./entidades/Jugador.js";
-import { Agua } from "./datos/ListaElementos.js";
-
 import { enfrentamiento } from "./dominio/Combate.js";
 import { listaRivales } from "./datos/ListaRival.js";
-
 import { crearRival } from "./dominio/Fabrica.js";
-
+import { Mapa } from "./dominio/Mapa.js";
+import { Jugador } from "./entidades/Jugador.js";
+import { Agua } from "./datos/ListaElementos.js";
 import { nombreASemilla } from "./dominio/NombreASemilla.js";
+import { registrarPantalla, mostrarPantalla } from "./pantallas/Organizador.js";
+import { dibujarTitulo } from "./pantallas/Titulos.js";
 
-const semilla = nombreASemilla("SotoR713");
-console.log("Semilla de 'SotoR713':", semilla);
+registrarPantalla("titulo", dibujarTitulo);
 
-const genNombre = new Generador(semilla);
-console.log("Primer aleatorio:", genNombre.aleatorio());
+mostrarPantalla("titulo");
+const idJugador = nombreASemilla("SotoR713");
+const heroe = new Jugador(idJugador, "SotoR713", Agua, 20, 20, 5, 2, 3, 1);
+const mapa = new Mapa(heroe);
 
-
-
-
+console.log("=== Simulando 6 pasos del mapa ===");
+for (let paso = 0; paso < 6; paso++) {
+    const [op0, op1] = mapa.generarSiguientes();
+    console.log(`Paso ${paso}: opción0=${op0.getNombre()}, opción1=${op1.getNombre()} ${mapa.validarVsJefe() ? "(¡JEFE!)" : ""}`);
+    mapa.registrarAvance(0); // elijo siempre la opción 0
+}
 
 const cuadricula = document.getElementById("cuadricula");
 console.log(cuadricula);

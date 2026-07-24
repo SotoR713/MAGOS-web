@@ -16,3 +16,7 @@ export const BONIFICACION_CRITICO_JEFE = 50;
 export const EVASION_JEFE = 10;
 
 export const PORCENTAJE_CURACION_VICTORIA = 30;
+
+export const POSICIONES_JEFE = 5;
+export const SIGUIENTE_RIVAL = 6;
+export const SIGUIENTE_COFRE = 8;
