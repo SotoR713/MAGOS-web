@@ -1,7 +1,6 @@
 import { enfrentamiento } from "../dominio/Combate.js";
 import { mostrarPantalla } from "./Organizador.js";
 
-// Crea el bloque de stats de un mago (evita duplicar código - DRY)
 function crearBloqueStats(mago) {
     const stats = document.createElement("div");
     stats.classList.add("stats-combatiente");
@@ -33,7 +32,6 @@ export function dibujarBatalla(contenedor, datos) {
     const hpInicialJugador = jugador.getHpActual();
     const hpInicialRival = rival.getHpActual();
 
-    // Correr el combate ANTES de dibujar: obtenemos el registro completo
     const resultado = enfrentamiento(jugador, rival, datos.generador);
     const registro = resultado.registro;
 
@@ -70,18 +68,14 @@ export function dibujarBatalla(contenedor, datos) {
     const ladoRival = document.createElement("div");
     ladoRival.classList.add("lado-combatiente");
 
-    //const nombreRival = document.createElement("div");
-    //nombreRival.classList.add("nombre-combatiente");
-    //nombreRival.textContent = rival.getNombre() + " (" + rival.getElemento().getNombre() + ")";
-const nombreRival = document.createElement("div");
+    const nombreRival = document.createElement("div");
     nombreRival.classList.add("nombre-combatiente");
     nombreRival.textContent = rival.getNombre();
 
     const elementoRival = document.createElement("div");
     elementoRival.classList.add("elemento-combatiente");
     elementoRival.textContent = "(" + rival.getElemento().getNombre() + ")";
-    
-    
+
     const barraRival = document.createElement("div");
     barraRival.classList.add("barra-vida");
     const rellenoRival = document.createElement("div");
@@ -109,7 +103,7 @@ const nombreRival = document.createElement("div");
     boton.classList.add("boton-continuar");
     boton.textContent = "Continuar";
 
-    // --- Montar todo (jugador izquierda, rival derecha) ---
+    // --- Montar (jugador izquierda, rival derecha) ---
     const arena = document.createElement("div");
     arena.classList.add("arena");
     arena.appendChild(ladoJugador);
@@ -119,12 +113,15 @@ const nombreRival = document.createElement("div");
     contenedor.appendChild(cajaTexto);
     contenedor.appendChild(boton);
 
-    // --- Reproducción del combate turno a turno ---
+    // --- Reproducción turno a turno ---
     let indice = 0;
 
     function mostrarEvento() {
         if (indice >= registro.length) {
-            boton.textContent = "Fin";
+            // El combate terminó: regresar a la exploración si venimos de ahí
+            if (datos.mapa) {
+                mostrarPantalla("exploracion", { jugador: jugador, mapa: datos.mapa });
+            }
             return;
         }
 
@@ -133,7 +130,6 @@ const nombreRival = document.createElement("div");
         if (evento.tipo === "inicio") {
             cajaTexto.textContent = "⚔ ¡Comienza el combate! ⚔";
         } else if (evento.tipo === "golpe") {
-            // Actualizar la barra y HP del que recibió el golpe
             if (evento.objetivo === rival.getNombre()) {
                 const porcentaje = (evento.hpObjetivo / rival.getHpMax()) * 100;
                 rellenoRival.style.width = porcentaje + "%";
@@ -144,7 +140,6 @@ const nombreRival = document.createElement("div");
                 hpJugador.textContent = evento.hpObjetivo + " / " + jugador.getHpMax();
             }
 
-            // Narración según la diferencia (basada en Python)
             if (evento.diferencia > 0) {
                 cajaTexto.textContent = "¡¡¡CRITICO!!!";
             } else if (evento.diferencia < 0) {

@@ -1,5 +1,4 @@
 import { Mapa } from "../dominio/Mapa.js";
-import { Mapa } from "../dominio/Mapa.js";
 import { mostrarPantalla } from "./Organizador.js";
 import { crearRival } from "../dominio/Fabrica.js";
 import { BRival } from "../datos/ListaEventos.js";
@@ -12,14 +11,12 @@ export function dibujarExploracion(contenedor, datos) {
     const op0 = mapa.getSiguiente0();
     const op1 = mapa.getSiguiente1();
 
-function elegirCamino(eleccion) {
-        // ¿Qué evento se eligió?
+    function elegirCamino(eleccion) {
         const eventoElegido = (eleccion === 0) ? op0 : op1;
 
         mapa.registrarAvance(eleccion);
 
         if (eventoElegido === BRival) {
-            // Generar el rival y saltar al combate
             const rival = crearRival(mapa.getGenerador().aleatorio(), mapa.getCamino().length);
             mostrarPantalla("batalla", {
                 jugador: jugador,
@@ -28,7 +25,6 @@ function elegirCamino(eleccion) {
                 mapa: mapa
             });
         } else {
-            // Otros eventos (cofre, curación, jefe): por ahora solo avanzar
             contenedor.innerHTML = "";
             dibujarExploracion(contenedor, { jugador: jugador, mapa: mapa });
         }
@@ -55,7 +51,7 @@ function elegirCamino(eleccion) {
         let esCamino = false;
         let contenido = "";
         let claseExtra = "";
-        let esOpcion = null; // 0, 1 o null
+        let esOpcion = null;
 
         if (fila === FILA_CENTRO && col <= COL_BIFURCA) {
             esCamino = true;
@@ -101,7 +97,6 @@ function elegirCamino(eleccion) {
             casilla.textContent = contenido;
         }
 
-        // Si es una opción, hacerla clicable
         if (esOpcion !== null) {
             casilla.classList.add("clicable");
             const eleccion = esOpcion;
