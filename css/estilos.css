@@ -73,3 +73,113 @@ body {
     font-weight: bold;
     cursor: pointer;
 }
+
+.stats-combatiente {
+    margin-top: 6px;
+    font-size: 0.85em;
+    line-height: 1.4;
+}
+
+/* La arena: los dos combatientes lado a lado */
+.arena {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.lado-combatiente {
+    flex: 1;
+    background-color: #306230;
+    border: 3px solid #0f380f;
+    padding: 6px;
+    box-sizing: border-box;
+    image-rendering: pixelated;
+}
+
+.nombre-combatiente {
+    font-weight: bold;
+    font-size: 0.8em;
+    margin-bottom: 4px;
+    color: #e0f8d0;
+}
+
+.barra-vida {
+    width: 100%;
+    height: 12px;
+    background-color: #0f380f;
+    border: 2px solid #0f380f;
+}
+
+.barra-vida-relleno {
+    height: 100%;
+    background-color: #8bac0f;
+}
+
+.hp-texto {
+    font-size: 0.75em;
+    margin-top: 2px;
+    color: #e0f8d0;
+}
+
+.stats-combatiente {
+    margin-top: 6px;
+    font-size: 0.7em;
+    line-height: 1.5;
+    color: #e0f8d0;
+}
+
+/* Caja de texto tipo diálogo Game Boy */
+.caja-texto {
+    width: 100%;
+    max-width: 400px;
+    min-height: 44px;
+    margin-top: 10px;
+    background-color: #e0f8d0;
+    color: #0f380f;
+    border: 3px solid #0f380f;
+    border-radius: 4px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 0.85em;
+    display: flex;
+    align-items: center;
+}
+
+/* Botón integrado estilo Game Boy */
+.boton-continuar {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 8px;
+    background-color: #306230;
+    color: #e0f8d0;
+    border: 3px solid #0f380f;
+    border-radius: 4px;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 0.9em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.boton-continuar:hover {
+    background-color: #8bac0f;
+    color: #0f380f;
+}
+
+.nombre-combatiente {
+    font-weight: bold;
+    font-size: 0.8em;
+    color: #e0f8d0;
+    height: 2.4em;
+    overflow: hidden;
+    line-height: 1.2;
+}
+
+.elemento-combatiente {
+    font-size: 0.7em;
+    color: #8bac0f;
+    margin-bottom: 4px;
+}
